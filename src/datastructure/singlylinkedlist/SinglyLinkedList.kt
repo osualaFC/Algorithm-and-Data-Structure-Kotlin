@@ -16,6 +16,14 @@ class SinglyLinkedList {
         }
     }
 
+    fun printList(head : ListNode?){
+        var current = head
+        while(current != null) {
+            println(current.data)
+            current = current.next
+        }
+    }
+
     fun getLength() : Int {
         var count = 0
         var current = head
@@ -102,5 +110,31 @@ class SinglyLinkedList {
                 printList()
             }
         }
+    }
+
+    fun mergeTwoSortedList(a: ListNode?, b: ListNode?) : ListNode? {
+        val dummy = ListNode(0)
+        var tail = dummy
+        var firstNode = a
+        var secondNode = b
+        while(firstNode != null && secondNode != null) {
+            if(firstNode.data <= secondNode.data) {
+                tail.next = firstNode
+                firstNode = firstNode.next
+            } else {
+                tail.next = secondNode
+                secondNode = secondNode.next
+            }
+            tail = tail.next!!
+        }
+
+        //in a situation where one list is longer than the other
+        if(firstNode == null) {
+            tail.next = secondNode
+        } else {
+            tail.next = firstNode
+        }
+        printList(dummy.next)
+        return dummy.next
     }
 }
