@@ -1,5 +1,6 @@
 package datastructure.singlylinkedlist
 
+import datastructure.doublylinkedlist.DoublyLinkedList
 import kotlin.IndexOutOfBoundsException
 
 //head
